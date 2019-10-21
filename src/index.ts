@@ -140,7 +140,7 @@ Cypress.Commands.add(
           }
 
           return graphql({
-            schema,
+            schema: schema,
             source: query,
             variableValues: variables,
             operationName,
