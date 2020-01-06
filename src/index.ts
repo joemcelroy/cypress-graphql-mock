@@ -144,10 +144,15 @@ Cypress.Commands.add(
             source: query,
             variableValues: variables,
             operationName,
-            rootValue
+            rootValue: rootValue.data || rootValue
           })
             .then(wait(currentDelay))
-            .then((data: any) => new Response(JSON.stringify(data)));
+            .then((data: any) => {
+              return new Response(JSON.stringify({
+                data: data.data,
+                errors: rootValue.errors || []
+              }))
+            });
         }
         return originalFetch(input, init);
       }
