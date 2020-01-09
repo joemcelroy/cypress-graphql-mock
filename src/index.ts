@@ -139,6 +139,25 @@ Cypress.Commands.add(
               );
           }
 
+          if (
+            rootValue.statusCode && rootValue.statusCode !== 200
+          ) {
+            return Promise.resolve()
+              .then(wait(currentDelay))
+              .then(
+                () =>
+                  new Response(
+                    JSON.stringify({
+                      data: {},
+                      errors: []
+                    }),
+                    {
+                      status: rootValue.statusCode
+                    }
+                  )
+              );
+          }
+
           return graphql({
             schema: schema,
             source: query,

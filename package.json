@@ -1,7 +1,7 @@
 {
   "name": "@joemcelroy/cypress-graphql-mock",
   "description": "Mock out a GraphQL schema from the client",
-  "version": "0.3.3",
+  "version": "0.3.5",
   "scripts": {
     "dev": "tsc --declarationMap -w",
     "cypress:open": "yarn cypress open --project ./test",
